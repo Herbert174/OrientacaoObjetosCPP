@@ -4,21 +4,30 @@
 
 using namespace std;
 
+void ExibeSaldo(Conta& conta) {
+	cout << "O saldo da conta é: " << conta.recuperaSaldo() << endl;
+}
+
 int main() {
 	Conta umaConta;   //Instanciando uma struct
-
-	umaConta.numero = "123456";
-	umaConta.cpfTitular = "123.456.789-10";
-	umaConta.nomeTitular = "Herbert";
-	umaConta.saldo = 100;
-
 	Conta umaOutraConta;
-	umaOutraConta.saldo = 200;
 
-	umaOutraConta.depositar(500);
+	umaConta.defineNumeroConta("123");
+	umaConta.defineCpfTitular("12345678910");
+	umaConta.defineNomeTitular("Geraldo");
 	umaConta.sacar(50);
 
-	cout << "Uma conta: " << umaConta.saldo << " Outra conta: " << umaOutraConta.saldo << endl;
+	umaOutraConta.defineNumeroConta("321");
+	umaOutraConta.defineCpfTitular("01987654321");
+	umaOutraConta.defineNomeTitular("Robson");
+	umaOutraConta.depositar(500);
+	
+	cout << "uma Conta: numero da conta: " << umaConta.recuperaNumeroConta() << " CPF do titular: " << umaConta.recuperaCpfTitular();
+	cout << " Nome do titular: " << umaConta.recuperaNomeTitular() << endl;
+	cout << "uma outra Conta: numero da conta: " << umaOutraConta.recuperaNumeroConta() << " CPF do titular: " << umaOutraConta.recuperaCpfTitular();
+	cout << " Nome do titular: " << umaOutraConta.recuperaNomeTitular() << endl;
+
+	cout << "Uma conta: " << umaConta.recuperaSaldo() << " Outra conta: " << umaOutraConta.recuperaSaldo() << endl;
 
 	return 0;
 }
