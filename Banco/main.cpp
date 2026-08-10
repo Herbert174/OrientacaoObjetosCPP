@@ -9,17 +9,17 @@ void ExibeSaldo(Conta& conta) {
 }
 
 int main() {
-	Conta umaConta;   //Instanciando uma struct
-	Conta umaOutraConta;
+	Conta umaConta("123", "Herbert", "12345678910");   //Instanciando uma struct
+	Conta umaOutraConta("321", "Santos", "01987654321");
 
-	umaConta.defineNumeroConta("123");
+	/*umaConta.defineNumeroConta("123");
 	umaConta.defineCpfTitular("12345678910");
-	umaConta.defineNomeTitular("Geraldo");
+	umaConta.defineNomeTitular("Geraldo");*/
 	umaConta.sacar(50);
 
-	umaOutraConta.defineNumeroConta("321");
+	/*umaOutraConta.defineNumeroConta("321");
 	umaOutraConta.defineCpfTitular("01987654321");
-	umaOutraConta.defineNomeTitular("Robson");
+	umaOutraConta.defineNomeTitular("Robson");*/
 	umaOutraConta.depositar(500);
 	
 	cout << "uma Conta: numero da conta: " << umaConta.recuperaNumeroConta() << " CPF do titular: " << umaConta.recuperaCpfTitular();
