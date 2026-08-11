@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 
-/*Conta::Conta(std::string numero, std::string nomeTitular, std::string cpfTitular) {  //Implementação do construtor
+//Implementação do construtor
+/*Conta::Conta(std::string numero, std::string nomeTitular, std::string cpfTitular) {  
 	this->numero = numero; //this é o membro da classe e o numero (direita) é o passado no parametro
 	this->nomeTitular = nomeTitular;
 	this->cpfTitular = cpfTitular;
@@ -14,9 +15,16 @@ Conta::Conta(std::string numero, std::string nomeTitular, std::string cpfTitular
 	numero(numero), 
 	nomeTitular(nomeTitular), //Também é possivel definir dessa forma
 	cpfTitular(cpfTitular),   //evitando a utilização do this
-	saldo(0) {   
-
+	saldo(0) {
+	verificaTamanhoNome();
+	numeroContas++;
 }
+
+Conta::~Conta() {    //Implementação do destrutor
+	numeroContas--;
+}
+
+int Conta::numeroContas = 0; //A atribuição de valor a um static em classe deve ser feito na implementação
 
 void Conta::sacar(float valorASacar) {  //Implementando a definição do metodo criado na classe Conta
 	if (valorASacar < 0) {
@@ -66,3 +74,14 @@ void Conta::defineCpfTitular(std::string CpfTitular) {
 void Conta::defineNomeTitular(std::string NomeTitular) {
 	nomeTitular = NomeTitular;
 }*/
+
+int Conta::recuperanumeroContas() {   //Apesar de ser um membro static não precisa declarar o static na implementação
+	return numeroContas;
+}
+
+void Conta::verificaTamanhoNome() {
+	if (nomeTitular.size() < 5) {
+		std::cout << "Nome muito curto" << std::endl;
+		exit(1);
+	}
+}
