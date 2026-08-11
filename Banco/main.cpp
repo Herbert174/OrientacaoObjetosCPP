@@ -1,18 +1,25 @@
 #include <iostream>
 #include <string>
 #include "Conta.hpp"
+#include "Titular.h"
+#include "Cpf.h"
 
 using namespace std;
 
 void ExibeSaldo(Conta& conta) {
-	Conta contadesnecessario("123", "Joaozinho", "12345678910");
+	//Conta contadesnecessario("123", titular);
 	cout << "O saldo da conta e : " << conta.recuperaSaldo() << endl;
 }
 
 int main() {
-	Conta umaConta("123", "Herbert", "12345678910");   //Instanciando uma struct
-	Conta umaOutraConta("321", "Santos", "01987654321");
-	Conta terceiraConta("456", "Ana", "12398745601");
+	Cpf cpf("12345678910");
+	Titular titular(cpf, "Herbert");
+	Conta umaConta("123", titular);   //Instanciando uma struct
+	Conta umaOutraConta("321", Titular(Cpf("98765432110"), "Santos"));  //Dessa forma criamos um objeto temporario sem nome, e não conseguimos acessar esse objeto fora do objeto Conta
+
+	Conta terceiraConta("456", Titular(string("43555467676"), "Michael"));   //Conversão implicita, quando invés de passar a classe utilizada você já manda direto 
+	                                                                         //o tipo de variavel necessário para inicializar aquela classe
+	//umaOutraConta.titular.recuperaNomeTitular();                           //Se o construtor tiver a propriedade explicit, conversões implicitas serão negadas
 
 	/*umaConta.defineNumeroConta("123");
 	umaConta.defineCpfTitular("12345678910");

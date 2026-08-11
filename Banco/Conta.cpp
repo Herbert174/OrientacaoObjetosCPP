@@ -1,6 +1,6 @@
 #include "Conta.hpp"
 #include <iostream>
-#include <string>
+//#include <string>
 
 //Implementação do construtor
 /*Conta::Conta(std::string numero, std::string nomeTitular, std::string cpfTitular) {  
@@ -11,12 +11,11 @@
 }*/
 
 //Lista de inicialização     é mais otimizado pois inicializa os parametros apenas aqui e não na declaração
-Conta::Conta(std::string numero, std::string nomeTitular, std::string cpfTitular) :    
+Conta::Conta(std::string numero, Titular titular) :    
 	numero(numero), 
-	nomeTitular(nomeTitular), //Também é possivel definir dessa forma
-	cpfTitular(cpfTitular),   //evitando a utilização do this
+	titular(titular),        //Também é possivel definir dessa forma
+	                         //evitando a utilização do this
 	saldo(0) {
-	verificaTamanhoNome();
 	numeroContas++;
 }
 
@@ -56,11 +55,11 @@ std::string Conta::recuperaNumeroConta() const {
 }
 
 std::string Conta::recuperaCpfTitular() const {
-	return cpfTitular;
+	return titular.recuperaCpfTitular();
 }
 
 std::string Conta::recuperaNomeTitular() const {
-	return nomeTitular;
+	return titular.recuperaNomeTitular();
 }
 
 /*void Conta::defineNumeroConta(std::string NumeroConta) {
@@ -77,11 +76,4 @@ void Conta::defineNomeTitular(std::string NomeTitular) {
 
 int Conta::recuperanumeroContas() {   //Apesar de ser um membro static não precisa declarar o static na implementação
 	return numeroContas;
-}
-
-void Conta::verificaTamanhoNome() {
-	if (nomeTitular.size() < 5) {
-		std::cout << "Nome muito curto" << std::endl;
-		exit(1);
-	}
 }
