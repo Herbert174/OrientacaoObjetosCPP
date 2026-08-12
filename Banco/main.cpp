@@ -13,6 +13,9 @@ void ExibeSaldo(Conta& conta) {
 
 int main() {
 	Cpf cpf("12345678910");
+
+	//Titular* titular = new Titular(cpf, "Herbert"); //Forma de alocar a variavel na heap, invés da stack, menos 
+	                                                  //otimizado mas necessário quando trabalhamos com objetos maiores
 	Titular titular(cpf, "Herbert");
 	Conta umaConta("123", titular);   //Instanciando uma struct
 	Conta umaOutraConta("321", Titular(Cpf("98765432110"), "Santos"));  //Dessa forma criamos um objeto temporario sem nome, e não conseguimos acessar esse objeto fora do objeto Conta
@@ -20,8 +23,8 @@ int main() {
 	Conta terceiraConta("456", Titular(string("43555467676"), "Michael"));   //Conversão implicita, quando invés de passar a classe utilizada você já manda direto 
 	                                                                         //o tipo de variavel necessário para inicializar aquela classe
 	//umaOutraConta.titular.recuperaNomeTitular();                           //Se o construtor tiver a propriedade explicit, conversões implicitas serão negadas
-
-	/*umaConta.defineNumeroConta("123");
+	                                                                         //Conversões implicitas podem evitar a necessidade de copias pela classe
+	/*umaConta.defineNumeroConta("123");                                     //Recomendado sua utilização quando se busca performance
 	umaConta.defineCpfTitular("12345678910");
 	umaConta.defineNomeTitular("Geraldo");*/
 	umaConta.sacar(50);
