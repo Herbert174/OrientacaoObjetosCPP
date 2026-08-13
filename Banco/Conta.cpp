@@ -55,11 +55,11 @@ std::string Conta::recuperaNumeroConta() const {
 }
 
 std::string Conta::recuperaCpfTitular() const {
-	return titular.recuperaCpfTitular();
+	return titular.recuperaCpfPessoa();
 }
 
 std::string Conta::recuperaNomeTitular() const {
-	return titular.recuperaNomeTitular();
+	return titular.recuperaNomePessoa();
 }
 
 /*void Conta::defineNumeroConta(std::string NumeroConta) {

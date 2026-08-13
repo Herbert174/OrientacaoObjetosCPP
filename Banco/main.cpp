@@ -3,6 +3,7 @@
 #include "Conta.hpp"
 #include "Titular.h"
 #include "Cpf.h"
+#include "Funcionario.h"
 
 using namespace std;
 
@@ -45,5 +46,11 @@ int main() {
 
 	cout << "Numero de contas " << Conta::recuperanumeroContas() << endl;  //Classe:: assim podemos acessar um membro static
 	                                                                       //mesmo sem precisar chamar de um objeto dessa classe
+	
+	Funcionario funcionario(Cpf("12345678910"), "Herbert", 5000);
+
+	cout << "Nome do funcionario: " << funcionario.recuperaNome() << endl;
+	cout << "CPF do funcionario: " << funcionario.recuperaCpf() << endl;
+
 	return 0;
 }
