@@ -5,6 +5,10 @@ ContaPoupanca::ContaPoupanca(std::string numero, Titular titular) : Conta (numer
 
 }
 
+ContaPoupanca::~ContaPoupanca() {
+	std::cout << "Destrutor da conta poupanca" << std::endl;
+}
+
 void ContaPoupanca::sacar(float valorASacar) {  //Implementando a definição do metodo criado na classe Conta
 	if (valorASacar < 0) {
 		std::cout << "Não é possivel sacar um valor negativo" << std::endl;
@@ -19,4 +23,5 @@ void ContaPoupanca::sacar(float valorASacar) {  //Implementando a definição do
 		return;
 	}
 	saldo -= valorSaque;
+	std::cout << "O saldo da conta poupanca e : " << saldo << std::endl;
 }

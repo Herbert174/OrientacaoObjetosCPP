@@ -21,6 +21,7 @@ Conta::Conta(std::string numero, Titular titular) :
 
 Conta::~Conta() {    //Implementação do destrutor
 	numeroContas--;
+	std::cout << "Destrutor da conta corrente" << std::endl;
 }
 
 int Conta::numeroContas = 0; //A atribuição de valor a um static em classe deve ser feito na implementação
@@ -39,6 +40,7 @@ void Conta::sacar(float valorASacar) {  //Implementando a definição do metodo 
 		return;
 	}
 	saldo -= valorSaque;
+	std::cout << "O saldo da conta e : " << saldo << std::endl;
 }
 
 void Conta::depositar(float valorADepositar) {

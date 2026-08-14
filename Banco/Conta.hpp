@@ -26,9 +26,14 @@ public:                        //Define que tudo abaixo se torne um atributo ou 
 	//Conta() = delete   dessa forma removemos o construtor padrão que é criado ao instanciar um objeto sem
 	//                   definir um construtor proprio
 
-	~Conta();       //~ + nome da classe para declarar um destrutor (um destrutor não recebe nenhum parametro)
+	virtual ~Conta();       //~ + nome da classe para declarar um destrutor (um destrutor não recebe nenhum parametro)
+	//se uma classe precisar ser armazenada na Heap (usar o new) e o mesmo precisar usar um destrutor
+	//em uma classe derivada dela, é necessario o uso do virtual no destrutor na classe pai, para
+	//garantir que ao limpar a variavel (usar o delete) os 2 ou mais destrutores sejam chamados
 
-	void sacar(float valorASacar);
+	virtual void sacar(float valorASacar); //A propriedade virtual fica responsável por dizer ao compilador
+	                                       //para verificar se o objeto em questão tem alguma variação
+										   //desse método, caso tiver, execute essa variação
 	void depositar(float valorADepositar);
 	float recuperaSaldo() const;   //Declarando metodo como const
 

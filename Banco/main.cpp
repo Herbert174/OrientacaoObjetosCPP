@@ -15,16 +15,15 @@ void ExibeSaldo(Conta& conta) {   //Por esperar um tipo Conta, o ContaPoupança 
 	cout << "O saldo da conta e : " << conta.recuperaSaldo() << endl;
 }
 
-void ExibeSaldoPoupanca(ContaPoupanca& conta) {
-	cout << "O saldo da conta poupanca e : " << conta.recuperaSaldo() << endl;
-}
-
 int main() {
 	Cpf cpf("12345678910");
-
+	Titular titular(cpf, "Herbert");
+	Conta* contaNaHeap = new ContaPoupanca("123", titular);
+	delete contaNaHeap;
+	return 0;
 	//Titular* titular = new Titular(cpf, "Herbert"); //Forma de alocar a variavel na heap, invés da stack, menos 
 	                                                  //otimizado mas necessário quando trabalhamos com objetos maiores
-	Titular titular(cpf, "Herbert");
+	//Titular titular(cpf, "Herbert");
 	Conta umaConta("123", titular);   //Instanciando uma struct
 	ContaPoupanca umaContaP("123", titular);
 	Conta umaOutraConta("321", Titular(Cpf("98765432110"), "Santos"));  //Dessa forma criamos um objeto temporario sem nome, e não conseguimos acessar esse objeto fora do objeto Conta
@@ -37,6 +36,7 @@ int main() {
 	/*umaConta.defineNumeroConta("123");                                     //Recomendado sua utilização quando se busca performance
 	umaConta.defineCpfTitular("12345678910");
 	umaConta.defineNomeTitular("Geraldo");*/
+	
 	umaConta.depositar(250);
 	umaConta.sacar(50);
 	umaContaP.depositar(250);
@@ -57,9 +57,9 @@ int main() {
 
 	//cout << "Uma conta: " << umaConta.recuperaSaldo() << " Outra conta: " << umaOutraConta.recuperaSaldo() << endl;
 	ExibeSaldo(umaConta);
-	ExibeSaldoPoupanca(umaContaP);
+	ExibeSaldo(umaContaP);
 	ExibeSaldo(umaOutraConta);
-	ExibeSaldoPoupanca(umaOutraContaP);
+	ExibeSaldo(umaOutraContaP);
 
 	cout << "Numero de contas " << Conta::recuperanumeroContas() << endl;  //Classe:: assim podemos acessar um membro static
 	                                                                       //mesmo sem precisar chamar de um objeto dessa classe
