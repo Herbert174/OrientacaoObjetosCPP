@@ -15,7 +15,9 @@ private:  //Modificador de acesso
 	//std::string nomeTitular;
 	//std::string cpfTitular;           //Membro palavra que se refere ao atributo ou metodo de uma classe
 	
+protected:
 	float saldo; //Valores iniciais é interessante colocar no construtor
+	//short int tipoConta;
 
 public:                        //Define que tudo abaixo se torne um atributo ou metodo public
 	                           //até que outra definição explicitamente a mude ex. private:

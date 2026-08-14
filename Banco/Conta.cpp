@@ -15,7 +15,7 @@ Conta::Conta(std::string numero, Titular titular) :
 	numero(numero), 
 	titular(titular),        //Também é possivel definir dessa forma
 	                         //evitando a utilização do this
-	saldo(0) {
+	saldo(0){
 	numeroContas++;
 }
 
@@ -31,11 +31,14 @@ void Conta::sacar(float valorASacar) {  //Implementando a definição do metodo 
 		return;
 	}
 
-	if (valorASacar > saldo) {
+	float tarifaSaque = valorASacar * 0.05;
+	float valorSaque = valorASacar + tarifaSaque;
+
+	if (valorSaque > saldo) {
 		std::cout << "Saldo insuficiente" << std::endl;
 		return;
 	}
-	saldo -= valorASacar;
+	saldo -= valorSaque;
 }
 
 void Conta::depositar(float valorADepositar) {
