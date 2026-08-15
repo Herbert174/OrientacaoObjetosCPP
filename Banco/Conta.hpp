@@ -31,7 +31,7 @@ public:                        //Define que tudo abaixo se torne um atributo ou 
 	//em uma classe derivada dela, é necessario o uso do virtual no destrutor na classe pai, para
 	//garantir que ao limpar a variavel (usar o delete) os 2 ou mais destrutores sejam chamados
 
-	virtual void sacar(float valorASacar); //A propriedade virtual fica responsável por dizer ao compilador
+	void sacar(float valorASacar); //A propriedade virtual fica responsável por dizer ao compilador
 	                                       //para verificar se o objeto em questão tem alguma variação
 										   //desse método, caso tiver, execute essa variação
 	void depositar(float valorADepositar);
@@ -40,6 +40,11 @@ public:                        //Define que tudo abaixo se torne um atributo ou 
 	std::string recuperaNumeroConta() const;
 	std::string recuperaCpfTitular() const;
 	std::string recuperaNomeTitular() const;
+	virtual float taxaSaque() const = 0;       //O = 0 nesse caso indica para a classe que este metodo
+											   //não possui implementação, nessa classe, mas terá
+											   //nas classes que herdarem dela
+											   //Um metodo virtual = 0 (sem implementação) é conhecido como
+											   //metodo puramente virtual
 
 	/*void defineNumeroConta(std::string NumeroConta);
 	void defineCpfTitular(std::string CpfTitular);
