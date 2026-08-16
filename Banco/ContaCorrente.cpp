@@ -13,3 +13,8 @@ float ContaCorrente::taxaSaque() const {
 	std::cout << "Chamando metodo Conta Corrente" << std::endl;
 	return 0.05;
 }
+
+void ContaCorrente::transferePara(Conta& destino, float valor) {
+	sacar(valor);
+	destino.depositar(valor);
+}

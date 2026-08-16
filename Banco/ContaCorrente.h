@@ -7,6 +7,7 @@ public:
 	ContaCorrente(std::string numero, Titular titular);
 	~ContaCorrente();
 	float taxaSaque() const override;
+	void transferePara(Conta& destino, float valor);
 
 };
 

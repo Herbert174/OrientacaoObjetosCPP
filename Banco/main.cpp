@@ -6,6 +6,7 @@
 #include "Titular.h"
 #include "Cpf.h"
 #include "Funcionario.h"
+#include "Gerente.h"
 
 using namespace std;
 
@@ -50,6 +51,8 @@ int main() {
 	umaOutraConta.sacar(75);
 	umaOutraContaP.depositar(500);
 	umaOutraContaP.sacar(75);
+
+	umaOutraConta.transferePara(umaConta, 120);
 	
 	cout << "uma Conta: numero da conta: " << umaConta.recuperaNumeroConta() << " CPF do titular: " << umaConta.recuperaCpfTitular();
 	cout << " Nome do titular: " << umaConta.recuperaNomeTitular() << endl;
@@ -65,7 +68,7 @@ int main() {
 	cout << "Numero de contas " << Conta::recuperanumeroContas() << endl;  //Classe:: assim podemos acessar um membro static
 	                                                                       //mesmo sem precisar chamar de um objeto dessa classe
 	
-	Funcionario funcionario(Cpf("12345678910"), "Herbert", 5000);
+	Gerente funcionario(Cpf("12345678910"), "Herbert", 5000);
 
 	cout << "Nome do funcionario: " << funcionario.recuperaNome() << endl;
 	cout << "CPF do funcionario: " << funcionario.recuperaCpf() << endl;
