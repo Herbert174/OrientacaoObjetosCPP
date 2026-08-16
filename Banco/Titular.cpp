@@ -1,6 +1,6 @@
 #include "Titular.h"
 
-Titular::Titular(Cpf cpf, std::string nome) : Pessoa(cpf,nome) {  //Chamando construtor de Pessoa no construtor de Titular
+Titular::Titular(Cpf cpf, std::string nome, std::string senha) : Pessoa(cpf,nome), Autenticavel(senha) {  //Chamando construtor de Pessoa e Autenticavel no construtor de Titular
 
 }
 
